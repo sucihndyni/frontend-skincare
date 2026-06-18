@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-// Gunakan env VITE_API_URL jika tersedia, atau fallback ke local backend.
-const envApiBaseUrl = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000/api';
-const envBaseUrl = import.meta.env.VITE_BASE_URL || 'http://127.0.0.1:8000';
+// Gunakan env VITE_API_URL jika tersedia, atau fallback ke backend railway yang sudah deploy.
+const envApiBaseUrl = import.meta.env.VITE_API_URL || 'https://focused-victory-production-0fa6.up.railway.app/api';
+const envBaseUrl = import.meta.env.VITE_BASE_URL || 'https://focused-victory-production-0fa6.up.railway.app';
 export const API_BASE_URL = envApiBaseUrl.replace(/\/+$/, '');
 export const BASE_URL = envBaseUrl.replace(/\/+$/, '');
 export const API_URL = API_BASE_URL;
@@ -10,6 +10,10 @@ export const API_URL = API_BASE_URL;
 // 2. Buat instance axios
 const api = axios.create({
   baseURL: API_BASE_URL,
+  headers: {
+    Accept: 'application/json',
+    'Content-Type': 'application/json',
+  },
 });
 
 // 3. Request Interceptor: selalu pasang token terbaru
