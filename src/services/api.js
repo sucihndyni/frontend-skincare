@@ -1,7 +1,10 @@
 import axios from 'axios';
 
 // Gunakan env VITE_API_URL jika tersedia, atau fallback ke backend Railway /api.
-const envApiBaseUrl = import.meta.env.VITE_API_URL || 'https://focused-victory-production-0fa6.up.railway.app/api';
+let envApiBaseUrl = import.meta.env.VITE_API_URL || 'https://focused-victory-production-0fa6.up.railway.app/api';
+if (envApiBaseUrl && !envApiBaseUrl.endsWith('/api')) {
+  envApiBaseUrl = `${envApiBaseUrl}/api`;
+}
 const envBaseUrl = import.meta.env.VITE_BASE_URL || 'https://focused-victory-production-0fa6.up.railway.app';
 export const API_BASE_URL = envApiBaseUrl.replace(/\/+$/, '');
 export const BASE_URL = envBaseUrl.replace(/\/+$/, '');
