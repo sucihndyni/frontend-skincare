@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from 'axios';
-import { API_BASE_URL } from "../services/api"; // Pastikan path ini benar
+import api from '../services/api';
 
 export default function Login() {
   const [username, setUsername] = useState("");
@@ -17,7 +16,7 @@ export default function Login() {
 
     try {
       // Mengirim request login ke backend
-      const response = await axios.post(`${API_BASE_URL}/login`, { username, password });
+      const response = await api.post(`/login`, { username, password });
       
       // PENTING: Simpan keduanya agar sistem interceptor di api.js bisa bekerja
       localStorage.setItem("token", response.data.token);
