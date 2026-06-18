@@ -1,0 +1,21 @@
+body {
+  margin: 0;
+  background: #fff8f8;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.card {
+  border-radius: 20px;
+}
+
+.navbar-brand {
+  color: #d8a7b1 !important;
+}
+
+.nav-link {
+  font-weight: 500;
+}
+
+body { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #FAFAFA; }
+.card { transition: transform 0.2s; }
+.card:hover { transform: translateY(-5px); }
