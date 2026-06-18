@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-// Gunakan env VITE_API_URL jika tersedia, atau fallback ke backend railway yang sudah deploy.
+// Gunakan env VITE_API_URL jika tersedia, atau fallback ke backend Railway /api.
 const envApiBaseUrl = import.meta.env.VITE_API_URL || 'https://focused-victory-production-0fa6.up.railway.app/api';
 const envBaseUrl = import.meta.env.VITE_BASE_URL || 'https://focused-victory-production-0fa6.up.railway.app';
 export const API_BASE_URL = envApiBaseUrl.replace(/\/+$/, '');
@@ -20,6 +20,7 @@ const api = axios.create({
 api.interceptors.request.use((config) => {
   const token = localStorage.getItem('token');
   if (token) {
+    config.headers = config.headers || {};
     config.headers.Authorization = `Bearer ${token}`;
   }
   return config;

@@ -24,8 +24,14 @@ export default function Login() {
       
       navigate("/home");
     } catch (err) {
-      // Menangkap error dari backend
-      setError(err.response?.data?.message || "Username atau password salah. Silakan coba lagi.");
+      // Menangkap error dari backend atau network
+      if (err.response?.data?.message) {
+        setError(err.response.data.message);
+      } else if (err.response) {
+        setError(`Login gagal: ${err.response.status} ${err.response.statusText}`);
+      } else {
+        setError("Tidak dapat menghubungi server. Cek koneksi atau CORS backend.");
+      }
     } finally {
       setLoading(false);
     }
