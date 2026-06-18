@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import api from '../services/api';
+import api, { API_BASE_URL } from '../services/api';
 
 export default function Login() {
   const [username, setUsername] = useState("");
@@ -15,8 +15,8 @@ export default function Login() {
     setLoading(true);
 
     try {
-      // Mengirim request login ke backend
-      const response = await api.post(`/login`, { username, password });
+      // Mengirim request login ke backend (pakai URL penuh untuk memastikan /api hadir)
+      const response = await api.post(`${API_BASE_URL}/login`, { username, password });
       
       // PENTING: Simpan keduanya agar sistem interceptor di api.js bisa bekerja
       localStorage.setItem("token", response.data.token);
