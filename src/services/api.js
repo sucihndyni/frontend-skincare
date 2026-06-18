@@ -1,13 +1,27 @@
 import axios from 'axios';
 
-// Gunakan env VITE_API_URL jika tersedia, atau fallback ke backend Railway /api.
 let envApiBaseUrl = import.meta.env.VITE_API_URL || 'https://focused-victory-production-0fa6.up.railway.app/api';
-if (envApiBaseUrl && !envApiBaseUrl.endsWith('/api')) {
+
+// Bersihkan spasi dan hilangkan trailing slash
+envApiBaseUrl = envApiBaseUrl.trim().replace(/\/+$/, '');
+
+// Pastikan berakhiran dengan /api
+if (!envApiBaseUrl.endsWith('/api')) {
   envApiBaseUrl = `${envApiBaseUrl}/api`;
 }
+
+// Bersihkan double slashes di dalam path, jika ada (contoh: https://domain.com//api -> https://domain.com/api)
+try {
+  const parsedUrl = new URL(envApiBaseUrl);
+  parsedUrl.pathname = parsedUrl.pathname.replace(/\/+/g, '/');
+  envApiBaseUrl = parsedUrl.toString().replace(/\/+$/, '');
+} catch (e) {
+  envApiBaseUrl = envApiBaseUrl.replace(/([^:]\/)\/+/g, "$1");
+}
+
 const envBaseUrl = import.meta.env.VITE_BASE_URL || 'https://focused-victory-production-0fa6.up.railway.app';
-export const API_BASE_URL = envApiBaseUrl.replace(/\/+$/, '');
-export const BASE_URL = envBaseUrl.replace(/\/+$/, '');
+export const API_BASE_URL = envApiBaseUrl;
+export const BASE_URL = envBaseUrl.trim().replace(/\/+$/, '');
 export const API_URL = API_BASE_URL;
 
 console.log('🔧 API Config:', { API_BASE_URL, BASE_URL, env: import.meta.env.VITE_API_URL });

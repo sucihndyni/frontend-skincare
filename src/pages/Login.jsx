@@ -15,8 +15,8 @@ export default function Login() {
     setLoading(true);
 
     try {
-      // Mengirim request login ke backend (pakai URL penuh untuk memastikan /api hadir)
-      const response = await api.post(`${API_BASE_URL}/login`, { username, password });
+      // Mengirim request login ke backend menggunakan path relatif (Axios akan menggabungkan dengan baseURL /api)
+      const response = await api.post('/login', { username, password });
       
       // PENTING: Simpan keduanya agar sistem interceptor di api.js bisa bekerja
       localStorage.setItem("token", response.data.token);
