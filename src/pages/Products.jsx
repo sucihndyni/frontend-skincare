@@ -106,6 +106,21 @@ export default function Products() {
     }
   };
 
+  const handleDeleteProduct = async (id) => {
+    if (window.confirm("Apakah Anda yakin ingin menghapus produk ini?")) {
+      try {
+        const response = await api.delete(`/products/${id}`);
+        if (response.status === 200 || response.status === 204) {
+          alert("Produk berhasil dihapus!");
+          fetchInitialData();
+        }
+      } catch (error) {
+        console.error("Gagal menghapus produk:", error);
+        alert(error.response?.data?.message || "Terjadi kesalahan saat menghapus produk.");
+      }
+    }
+  };
+
   return (
     <>
       <Navbar />
@@ -156,7 +171,12 @@ export default function Products() {
                         </button>
                       </div>
                       <div className="col-6">
-                        <button className="btn btn-sm btn-outline-danger w-100">Hapus</button>
+                        <button 
+                          className="btn btn-sm btn-outline-danger w-100"
+                          onClick={() => handleDeleteProduct(prod.id)}
+                        >
+                          Hapus
+                        </button>
                       </div>
                     </div>
                   </div>

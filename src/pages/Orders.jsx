@@ -43,14 +43,15 @@ export default function Orders() {
   return (
     <>
       <Navbar />
-      <div className="container py-5" style={{ minHeight: "100vh", backgroundColor: "#FDFBF7" }}>
-        <div className="d-flex justify-content-between align-items-center mb-4">
-          <h2 className="fw-bold" style={{ color: "#D8A7B1" }}>
-            <i className="bi bi-wallet2 me-2"></i> Riwayat Transaksi
-          </h2>
-        </div>
+      <div className="container-fluid py-5" style={{ minHeight: "100vh", backgroundColor: "#FFF8F8" }}>
+        <div className="container">
+          <div className="d-flex justify-content-between align-items-center mb-4">
+            <h2 className="fw-bold" style={{ color: "#D8A7B1" }}>
+              <i className="bi bi-wallet2 me-2"></i> Riwayat Transaksi
+            </h2>
+          </div>
 
-        <div className="card border-0 shadow-sm" style={{ borderRadius: "20px", overflow: "hidden" }}>
+          <div className="card border-0 shadow-sm" style={{ borderRadius: "20px", overflow: "hidden" }}>
           <div className="table-responsive">
             <table className="table table-hover align-middle mb-0">
               <thead style={{ backgroundColor: "#FFF0F3" }}>
@@ -96,6 +97,7 @@ export default function Orders() {
           </div>
         </div>
       </div>
+    </div>
 
       {/* MODAL */}
       <div className="modal fade" id="orderDetailModal" tabIndex="-1">
