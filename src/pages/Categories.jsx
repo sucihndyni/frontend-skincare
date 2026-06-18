@@ -103,9 +103,6 @@ export default function Categories() {
             <h2 className="fw-bold" style={{ color: "#D8A7B1" }}>
               <i className="bi bi-tags me-2"></i> Category Management
             </h2>
-            <button className="btn btn-sm btn-outline-secondary" onClick={fetchCategories}>
-              <i className="bi bi-arrow-clockwise"></i> Refresh Data
-            </button>
           </div>
 
           {loading ? (
@@ -113,14 +110,14 @@ export default function Categories() {
               <div className="spinner-border" style={{ color: "#D8A7B1" }} />
             </div>
           ) : (
-            <div className="card border-0 shadow-sm" style={{ borderRadius: "15px" }}>
-              <div className="table-responsive p-3">
+            <div className="card border-0 shadow-sm" style={{ borderRadius: "20px", overflow: "hidden" }}>
+              <div className="table-responsive">
                 <table className="table table-hover align-middle mb-0">
-                  <thead className="table-light">
-                    <tr>
-                      <th style={{ width: "150px" }}>ID Kategori</th>
-                      <th>Nama Kategori</th>
-                      <th className="text-center" style={{ width: "200px" }}>Aksi Admin</th>
+                  <thead style={{ backgroundColor: "#FFF0F3" }}>
+                    <tr style={{ color: "#D8A7B1" }}>
+                      <th className="px-4 py-3" style={{ width: "150px" }}>ID Kategori</th>
+                      <th className="py-3">Nama Kategori</th>
+                      <th className="text-center py-3" style={{ width: "220px" }}>Aksi Admin</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -133,23 +130,32 @@ export default function Categories() {
                     ) : (
                       categories.map((item) => (
                         <tr key={item.id}>
-                          <td className="fw-bold text-muted">#{item.id}</td>
+                          <td className="px-4 fw-bold text-muted">#{item.id}</td>
                           <td>
-                            <span className="badge bg-light text-dark border rounded-pill px-3 py-2 fw-semibold">
+                            <span className="badge rounded-pill px-3 py-2 fw-semibold" style={{ backgroundColor: "#FFF0F3", color: "#E995B1", border: "1px solid #FFE4E8" }}>
                               {item.nama_kategori}
                             </span>
                           </td>
                           <td className="text-center">
                             <button 
-                              className="btn btn-sm btn-outline-primary me-2" 
+                              className="btn btn-sm px-3 py-1.5 rounded-pill me-2 fw-semibold" 
+                              style={{ backgroundColor: "#E3F2FD", color: "#0D47A1", border: "none", fontSize: "12px", transition: "all 0.2s" }} 
                               data-bs-toggle="modal" 
                               data-bs-target="#editCategoryModal" 
                               onClick={() => openEdit(item)}
+                              onMouseOver={(e) => { e.target.style.backgroundColor = "#BBDEFB"; }}
+                              onMouseOut={(e) => { e.target.style.backgroundColor = "#E3F2FD"; }}
                             >
-                              Edit
+                              <i className="bi bi-pencil me-1"></i> Edit
                             </button>
-                            <button className="btn btn-sm btn-outline-danger" onClick={() => deleteCategory(item.id)}>
-                              Hapus
+                            <button 
+                              className="btn btn-sm px-3 py-1.5 rounded-pill fw-semibold" 
+                              style={{ backgroundColor: "#FFEBEE", color: "#C62828", border: "none", fontSize: "12px", transition: "all 0.2s" }} 
+                              onClick={() => deleteCategory(item.id)}
+                              onMouseOver={(e) => { e.target.style.backgroundColor = "#FFCDD2"; }}
+                              onMouseOut={(e) => { e.target.style.backgroundColor = "#FFEBEE"; }}
+                            >
+                              <i className="bi bi-trash me-1"></i> Hapus
                             </button>
                           </td>
                         </tr>

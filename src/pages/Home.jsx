@@ -110,7 +110,7 @@ export default function Home() {
         <div className="container">
           
           <div className="text-center mb-4">
-            <h2 className="fw-bold text-dark">Product Catalog Display</h2>
+            <h2 className="fw-bold" style={{ color: "#D8A7B1" }}>Product Catalog Display</h2>
             <div style={{ width: "60px", height: "4px", backgroundColor: "#D8A7B1", margin: "10px auto", borderRadius: "2px" }}></div>
           </div>
 
