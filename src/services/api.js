@@ -1,8 +1,10 @@
 import axios from 'axios';
 
 // Gunakan env VITE_API_URL jika tersedia, atau fallback ke local backend.
-export const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000/api';
-export const BASE_URL = import.meta.env.VITE_BASE_URL || 'http://127.0.0.1:8000';
+const envApiBaseUrl = import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000/api';
+const envBaseUrl = import.meta.env.VITE_BASE_URL || 'http://127.0.0.1:8000';
+export const API_BASE_URL = envApiBaseUrl.replace(/\/+$/, '');
+export const BASE_URL = envBaseUrl.replace(/\/+$/, '');
 export const API_URL = API_BASE_URL;
 
 // 2. Buat instance axios
