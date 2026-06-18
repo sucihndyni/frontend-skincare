@@ -7,6 +7,8 @@ export const API_BASE_URL = envApiBaseUrl.replace(/\/+$/, '');
 export const BASE_URL = envBaseUrl.replace(/\/+$/, '');
 export const API_URL = API_BASE_URL;
 
+console.log('🔧 API Config:', { API_BASE_URL, BASE_URL, env: import.meta.env.VITE_API_URL });
+
 // 2. Buat instance axios
 const api = axios.create({
   baseURL: API_BASE_URL,
