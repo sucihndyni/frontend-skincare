@@ -52,7 +52,7 @@ export default function Login() {
           <h2 className="fw-bold" style={{ color: "#D8A7B1", letterSpacing: "0.5px" }}>
             ✨ SweetGlow
           </h2>
-          <p className="text-muted small">Masuk untuk mengelola produk & transaksi premium skincare</p>
+          <p className="text-muted small">Masuk untuk mengelola produk</p>
         </div>
 
         {error && (
