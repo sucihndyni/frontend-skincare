@@ -18,7 +18,7 @@ export default function Navbar() {
         
         {/* BRAND / LOGO (Tetap di Kiri) */}
         <Link className="navbar-brand fw-bold d-flex align-items-center gap-2" to="/home" style={{ color: "#D8A7B1", fontSize: "22px", letterSpacing: "0.5px" }}>
-          <span>✨</span> SweetGlow
+          <span>✨</span> SweetHome
         </Link>
 
         {/* TOGGLE MOBIL */}
